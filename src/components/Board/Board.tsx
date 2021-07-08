@@ -16,7 +16,7 @@ const Board: FC<Props> = ({ board, handleClick }) => {
                     key={index}
                     value={value}
                     index={index}
-                    handleClick={handleClick}
+                    handleClick={() => handleClick(index)}
                 />
             ))}
         </div>

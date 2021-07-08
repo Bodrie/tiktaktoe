@@ -4,12 +4,12 @@ import './Square.css';
 interface Props {
     index: number,
     value: string,
-    handleClick(index: number): void
+    handleClick: () =>  void
 }
 
-const Square: FC<Props> = ({ index, value, handleClick }) => {
+const Square: FC<Props> = ({ value, handleClick }) => {
     return (
-        <button className="board-square" onClick={() => handleClick(index)}>{value}</button>
+        <button className="board-square" onClick={() => handleClick()}>{value}</button>
     );
 }
 

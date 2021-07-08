@@ -7,6 +7,7 @@ function App() {
     return (
         <div className="App">
             <Board board={board.board} handleClick={board.handleClick} />
+            { board.winner ? <p>The winner is: {board.winner}</p> : '' }
         </div>
     );
 }
