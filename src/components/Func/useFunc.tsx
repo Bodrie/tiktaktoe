@@ -41,15 +41,14 @@ export default (): Func => {
     const handleClick = (index: number): void => {
 
         if (!board[index] && winner === '') {
-            const newBoard = [...board];
-            newBoard.splice(index, 1, turn);
+            const copyBoard = [...board];
+            copyBoard.splice(index, 1, turn);
 
-            setBoard(newBoard);
+            setBoard(copyBoard);
 
             const newTurn = turn === "X" ? "O" : "X";
             setTurn(newTurn);
         }
-
     };
     
     //for (let i = 0; i <= winningConditions.length - 1; i++) {
