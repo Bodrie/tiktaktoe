@@ -1,15 +1,17 @@
 import { useState } from 'react';
+import { turn } from '../Func/turn';
 
 interface Func {
     board: string[],
     handleClick: (index: number) => void,
-    winner: string
+    winner: string,
+    noMoves: boolean
 }
 
 export default (): Func => {
 
     const [board, setBoard] = useState(Array(9).fill(""));
-    const [turn, setTurn] = useState("X");
+    //const [turn, setTurn] = useState("X");
 
     const winningConditions = [
         [0, 1, 2],
@@ -22,15 +24,15 @@ export default (): Func => {
         [6, 4, 2]
     ];
 
-    const winX = (boardIndex: number ) => board[boardIndex] === "X";
-    const winO = (boardIndex: number ) => board[boardIndex] === "O";
+    const winX = (boardIndex: number) => board[boardIndex] === "X";
+    const winO = (boardIndex: number) => board[boardIndex] === "O";
 
     const winner = winningConditions.reduce((acc, curr) => {
 
         if (curr.every(winX)) {
             return "X";
 
-        }else if (curr.every(winO)) {
+        } else if (curr.every(winO)) {
             return "O";
 
         } else {
@@ -40,17 +42,18 @@ export default (): Func => {
 
     const handleClick = (index: number): void => {
 
+        const onTurnIs = turn(board);
+
         if (!board[index] && winner === '') {
             const copyBoard = [...board];
-            copyBoard.splice(index, 1, turn);
+            copyBoard.splice(index, 1, onTurnIs);
 
             setBoard(copyBoard);
-
-            const newTurn = turn === "X" ? "O" : "X";
-            setTurn(newTurn);
         }
     };
-    
+
+    const noMoves = board.includes('X');
+
     //for (let i = 0; i <= winningConditions.length - 1; i++) {
     //    const winCondition = winningConditions[i];
     //    if(winCondition.every(winX)) {
@@ -60,5 +63,5 @@ export default (): Func => {
     //        
     //    }
     //}
-    return {board, handleClick, winner}
+    return { board, handleClick, winner, noMoves }
 }

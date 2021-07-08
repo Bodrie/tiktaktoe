@@ -7,13 +7,13 @@ import './App.css';
 
 function App() {
     const board = useFunc();
-    const noMoves = board.board.includes('X');
-    
+
+
     return (
         <div className="App">
             <Board board={board.board} handleClick={board.handleClick} />
-            { board.winner ? <Winner winnerName={board.winner}/> : <p className="winner">There is no winner...</p>}
-            { noMoves ? <Reset /> : '' }
+            {board.winner ? <Winner winnerName={board.winner} /> : <p className="winner">There is no winner...</p>}
+            <Reset />
         </div>
     );
 }

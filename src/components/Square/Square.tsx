@@ -4,7 +4,7 @@ import './Square.css';
 interface Props {
     index: number,
     value: string,
-    handleClick: () =>  void
+    handleClick: () => void
 }
 
 const Square: FC<Props> = ({ value, handleClick }) => {
