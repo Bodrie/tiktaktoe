@@ -11,7 +11,9 @@ interface Func {
 export default (): Func => {
 
     const [board, setBoard] = useState(Array(9).fill(""));
-    //const [turn, setTurn] = useState("X");
+
+    //First solution was with second state which kept the next move... 
+    //const [turn, setTurn] = useState("X"); 
 
     const winningConditions = [
         [0, 1, 2],
@@ -31,10 +33,8 @@ export default (): Func => {
 
         if (curr.every(winX)) {
             return "X";
-
         } else if (curr.every(winO)) {
             return "O";
-
         } else {
             return acc;
         }

@@ -1,4 +1,8 @@
 .reset-button {
     cursor: pointer;
     display: inline-block;
+    font-size: x-large;
+    border-radius: 5px;
+    border: solid 2px black;
+    background-color: wheat;
 }
